@@ -1,0 +1,6 @@
+{
+  "name": "InstaWatch",
+  "description": "Social video, photo feed, Reels, long-form Watch hub, real-time messaging, and voice & video calling platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
