@@ -1,3 +1,107 @@
 <resources>
     <string name="app_name">InstaWatch</string>
+
+    <!-- Auth & Onboarding -->
+    <string name="auth_tagline">Photos, Reels, Long Watch Videos, Instant Chat &amp; Live Calls — All in One Place.</string>
+    <string name="auth_tab_login">Log In</string>
+    <string name="auth_tab_signup">Sign Up</string>
+    <string name="auth_login_title">Welcome Back to InstaWatch</string>
+    <string name="auth_login_subtitle">Log in securely with your Google account to restore your creator session, messages, and Real Score.</string>
+    <string name="auth_signup_title">Create Your Creator Account</string>
+    <string name="auth_signup_subtitle">Choose your creator channel details and sign up securely with Firebase Auth &amp; Google Identity.</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_up_google">Sign up with Google</string>
+    <string name="restoring_session">Checking saved session…</string>
+    <string name="session_verified_badge">Firebase Auth Session Active</string>
+    <string name="switch_to_signup">New here? Create an account</string>
+    <string name="switch_to_login">Already have an account? Log in</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="feature_pill_reels">Reels &amp; Real Score</string>
+    <string name="feature_pill_watch">Watch Long Videos</string>
+    <string name="feature_pill_chat">Instant Messaging</string>
+    <string name="feature_pill_calls">Voice &amp; Video Calls</string>
+
+    <!-- Navigation -->
+    <string name="nav_feed">Feed</string>
+    <string name="nav_watch">Watch</string>
+    <string name="nav_create">Create</string>
+    <string name="nav_reels">Reels</string>
+    <string name="nav_connect">Chats</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Feed & Stories -->
+    <string name="add_story">Your Story</string>
+    <string name="post_story">Share Status</string>
+    <string name="story_caption_label">What\'s happening right now?</string>
+    <string name="filter_all">All</string>
+    <string name="filter_photos">Photos</string>
+    <string name="filter_reels">Reels</string>
+    <string name="filter_long_videos">Long Videos</string>
+    <string name="empty_feed_title">Welcome to InstaWatch</string>
+    <string name="empty_feed_subtitle">Upload your first Photo, vertical Reel, or Long Watch Video from the Create form.</string>
+    <string name="create_first_post">Open Upload Form</string>
+
+    <!-- Watch Cinema -->
+    <string name="watch_header_title">InstaWatch Cinema</string>
+    <string name="watch_header_subtitle">Long-form creator videos, vlogs, tutorials &amp; shows</string>
+    <string name="empty_watch_title">No Long Videos Yet</string>
+    <string name="empty_watch_subtitle">Publish your first widescreen or full-length video using the Long Video form.</string>
+    <string name="upload_long_video">Upload Long Video</string>
+
+    <!-- Create & Registration Form -->
+    <string name="form_header_title">Creator &amp; Upload Studio</string>
+    <string name="form_mode_photo">Photo</string>
+    <string name="form_mode_reel">Reel</string>
+    <string name="form_mode_long_video">Long Video</string>
+    <string name="form_mode_creator">Creator Form</string>
+    <string name="pick_photo_gallery">Select Photo from Gallery</string>
+    <string name="pick_video_gallery">Select Video from Gallery</string>
+    <string name="pick_cover_gallery">Select Custom Cover Image</string>
+    <string name="field_title">Title / Headline</string>
+    <string name="field_caption">Caption / Full Description</string>
+    <string name="field_media_url">Direct Video or Image Stream URL (Optional)</string>
+    <string name="field_audio_track">Audio / Music Track Name</string>
+    <string name="field_location">Location Tag</string>
+    <string name="field_tags">Hashtags (comma separated)</string>
+    <string name="field_duration">Duration (seconds)</string>
+    <string name="field_public_visibility">Public Visibility (Visible in Community Feed)</string>
+    <string name="publish_now">Publish to InstaWatch</string>
+
+    <!-- Creator Registration Form -->
+    <string name="reg_form_title">Creator Profile &amp; Channel Form</string>
+    <string name="reg_form_subtitle">Complete your public creator channel and private contact settings</string>
+    <string name="field_display_name">Full Name / Channel Name</string>
+    <string name="field_handle">Creator Handle (@username)</string>
+    <string name="field_bio">Creator Bio &amp; Channel Tagline</string>
+    <string name="field_phone_private">Phone Number (Private — Never Shown Publicly)</string>
+    <string name="field_discoverable">Allow People to Find &amp; Call/Message Me</string>
+    <string name="field_notifications">Enable Activity &amp; Call Alerts</string>
+    <string name="save_creator_form">Save Creator Form</string>
+
+    <!-- Reels & Real Score -->
+    <string name="real_score_label">Real Score</string>
+    <string name="leaderboard_title">Creator Real Score Leaderboard</string>
+    <string name="empty_reels_title">No Reels Published Yet</string>
+    <string name="empty_reels_subtitle">Upload a vertical short video in the Create tab to earn +25 Real Score.</string>
+
+    <!-- Connect Hub: Chats, Calls & People -->
+    <string name="tab_chats">Chats</string>
+    <string name="tab_calls">Calls</string>
+    <string name="tab_people">People</string>
+    <string name="message_input_hint">Write a message…</string>
+    <string name="send_message">Send</string>
+    <string name="start_voice_call">Voice Call</string>
+    <string name="start_video_call">Video Call</string>
+    <string name="end_call">End Call</string>
+    <string name="accept_call">Accept</string>
+    <string name="decline_call">Decline</string>
+    <string name="saved_notes_chat">Open Saved Studio Chat</string>
+    <string name="test_video_call">Test Live Video Call</string>
+    <string name="test_voice_call">Test Voice Phone Call</string>
+
+    <!-- Comments & Share -->
+    <string name="comments_title">Comments</string>
+    <string name="add_comment_hint">Add a thoughtful comment…</string>
+    <string name="post_comment">Post</string>
+    <string name="share_to_chat">Share to Chat</string>
 </resources>

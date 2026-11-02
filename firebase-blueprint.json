@@ -1,0 +1,575 @@
+{
+  "entities": {
+    "UserAccount": {
+      "title": "UserAccount",
+      "description": "Private user account settings and isolated PII fields.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID owning this private account document."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address isolated from public profiles."
+        },
+        "phone": {
+          "type": "string",
+          "description": "Optional phone number submitted in the creator registration form."
+        },
+        "notificationsEnabled": {
+          "type": "boolean",
+          "description": "Whether push/in-app notifications are enabled."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": ["userId", "email", "notificationsEnabled", "createdAt", "updatedAt"]
+    },
+    "CreatorProfile": {
+      "title": "CreatorProfile",
+      "description": "Public discoverable creator profile containing zero PII, powering directory, Real Score leaderboard, and creator channels.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Authenticated Firebase UID owning this profile."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Public display name."
+        },
+        "handle": {
+          "type": "string",
+          "description": "Unique-style @handle."
+        },
+        "bio": {
+          "type": "string",
+          "description": "Creator channel bio and tagline."
+        },
+        "creatorCategory": {
+          "type": "string",
+          "description": "Primary creator niche or channel category."
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "Public avatar image URL."
+        },
+        "isDiscoverable": {
+          "type": "boolean",
+          "description": "Whether the profile appears in public discovery and people search."
+        },
+        "realScore": {
+          "type": "integer",
+          "description": "Cumulative Creator Real Score earned from Reels, Watch videos, photos, and community engagement."
+        },
+        "postsCount": {
+          "type": "integer",
+          "description": "Number of published posts, Reels, and Watch videos."
+        },
+        "followersCount": {
+          "type": "integer",
+          "description": "Number of followers."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "userId",
+        "displayName",
+        "handle",
+        "bio",
+        "creatorCategory",
+        "avatarUrl",
+        "isDiscoverable",
+        "realScore",
+        "postsCount",
+        "followersCount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "StoryItem": {
+      "title": "StoryItem",
+      "description": "Ephemeral-style status ring item shared to the Home Feed story bar.",
+      "type": "object",
+      "properties": {
+        "authorId": {
+          "type": "string",
+          "description": "UID of the creator who posted the story."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Display name of the story author."
+        },
+        "authorHandle": {
+          "type": "string",
+          "description": "Handle of the story author."
+        },
+        "authorAvatarUrl": {
+          "type": "string",
+          "description": "Avatar URL of the story author."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Status message or story caption."
+        },
+        "accentColorKey": {
+          "type": "string",
+          "enum": ["coral", "teal", "cobalt", "amber", "violet"],
+          "description": "Theme accent key for the story card backdrop."
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "private"],
+          "description": "Visibility scope for query alignment."
+        },
+        "viewsCount": {
+          "type": "integer",
+          "description": "Story view counter."
+        },
+        "thumbnailBase64": {
+          "type": "string",
+          "description": "Optional compact Base64 JPEG preview (<60KB)."
+        },
+        "localMediaUri": {
+          "type": "string",
+          "description": "Optional local file or HTTPS image URI."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "authorId",
+        "authorName",
+        "authorHandle",
+        "authorAvatarUrl",
+        "caption",
+        "accentColorKey",
+        "visibility",
+        "viewsCount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "MediaPost": {
+      "title": "MediaPost",
+      "description": "Unified social media post supporting Photo uploads, vertical Reels, and long-form Watch videos.",
+      "type": "object",
+      "properties": {
+        "authorId": {
+          "type": "string",
+          "description": "UID of the creator."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Creator display name."
+        },
+        "authorHandle": {
+          "type": "string",
+          "description": "Creator @handle."
+        },
+        "authorAvatarUrl": {
+          "type": "string",
+          "description": "Creator avatar URL."
+        },
+        "mediaType": {
+          "type": "string",
+          "enum": ["photo", "reel", "long_video"],
+          "description": "Content format: photo post, short vertical reel, or long-form Watch video."
+        },
+        "title": {
+          "type": "string",
+          "description": "Headline or video episode title."
+        },
+        "caption": {
+          "type": "string",
+          "description": "Detailed post caption or video description."
+        },
+        "category": {
+          "type": "string",
+          "description": "Content category (Entertainment, Tech, Music, Gaming, Vlog, Education, Lifestyle)."
+        },
+        "mediaUrl": {
+          "type": "string",
+          "description": "Media URI (HTTPS video/image stream or persisted local upload path)."
+        },
+        "durationSec": {
+          "type": "integer",
+          "description": "Video duration in seconds (0 for photo posts)."
+        },
+        "audioTrack": {
+          "type": "string",
+          "description": "Audio or music track label for Reels and videos."
+        },
+        "locationTag": {
+          "type": "string",
+          "description": "Optional-style location label (empty string when unset)."
+        },
+        "tags": {
+          "type": "array",
+          "description": "Bounded list of up to 8 hashtag strings."
+        },
+        "visibility": {
+          "type": "string",
+          "enum": ["public", "private"],
+          "description": "Access visibility."
+        },
+        "likesCount": {
+          "type": "integer",
+          "description": "Number of likes."
+        },
+        "commentsCount": {
+          "type": "integer",
+          "description": "Number of comments."
+        },
+        "viewsCount": {
+          "type": "integer",
+          "description": "Number of video/post views."
+        },
+        "realScorePoints": {
+          "type": "integer",
+          "description": "Engagement Real Score earned by this post."
+        },
+        "likedByUids": {
+          "type": "array",
+          "description": "Bounded list of up to 10 recent liker UIDs."
+        },
+        "thumbnailBase64": {
+          "type": "string",
+          "description": "Optional compact Base64 JPEG thumbnail (<60KB) extracted from photo or video frame."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "authorId",
+        "authorName",
+        "authorHandle",
+        "authorAvatarUrl",
+        "mediaType",
+        "title",
+        "caption",
+        "category",
+        "mediaUrl",
+        "durationSec",
+        "audioTrack",
+        "locationTag",
+        "tags",
+        "visibility",
+        "likesCount",
+        "commentsCount",
+        "viewsCount",
+        "realScorePoints",
+        "likedByUids",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "PostComment": {
+      "title": "PostComment",
+      "description": "Comment on a photo, Reel, or Watch video.",
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string",
+          "description": "Parent post document ID."
+        },
+        "authorId": {
+          "type": "string",
+          "description": "Comment author UID."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Comment author display name."
+        },
+        "authorHandle": {
+          "type": "string",
+          "description": "Comment author @handle."
+        },
+        "text": {
+          "type": "string",
+          "description": "Comment body text."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": ["postId", "authorId", "authorName", "authorHandle", "text", "createdAt", "updatedAt"]
+    },
+    "ChatThread": {
+      "title": "ChatThread",
+      "description": "Direct or small-group messaging thread isolated to participantIds.",
+      "type": "object",
+      "properties": {
+        "initiatorId": {
+          "type": "string",
+          "description": "UID of user who initiated the chat."
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "Bounded array (1..10) of participant UIDs."
+        },
+        "chatTitle": {
+          "type": "string",
+          "description": "Display title for the conversation."
+        },
+        "peerId": {
+          "type": "string",
+          "description": "Counterparty UID in 1:1 chats (or self UID for personal notes)."
+        },
+        "peerName": {
+          "type": "string",
+          "description": "Counterparty display name."
+        },
+        "peerHandle": {
+          "type": "string",
+          "description": "Counterparty @handle."
+        },
+        "lastMessage": {
+          "type": "string",
+          "description": "Preview of the most recent message."
+        },
+        "lastSenderId": {
+          "type": "string",
+          "description": "UID of the sender of the last message."
+        },
+        "messageCount": {
+          "type": "integer",
+          "description": "Total messages sent in the thread."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "initiatorId",
+        "participantIds",
+        "chatTitle",
+        "peerId",
+        "peerName",
+        "peerHandle",
+        "lastMessage",
+        "lastSenderId",
+        "messageCount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Individual message inside a ChatThread with denormalized participantIds for flat zero-trust access control.",
+      "type": "object",
+      "properties": {
+        "chatId": {
+          "type": "string",
+          "description": "Parent chat document ID."
+        },
+        "senderId": {
+          "type": "string",
+          "description": "UID of the message sender."
+        },
+        "senderName": {
+          "type": "string",
+          "description": "Display name of the sender."
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "Denormalized bounded array (1..10) matching parent ChatThread participantIds."
+        },
+        "text": {
+          "type": "string",
+          "description": "Message body."
+        },
+        "messageType": {
+          "type": "string",
+          "enum": ["text", "photo", "shared_post", "call_event"],
+          "description": "Kind of chat message."
+        },
+        "sharedPostId": {
+          "type": "string",
+          "description": "Referenced post ID if sharing a post/reel/video."
+        },
+        "thumbnailBase64": {
+          "type": "string",
+          "description": "Optional compact Base64 photo attachment (<60KB)."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "chatId",
+        "senderId",
+        "senderName",
+        "participantIds",
+        "text",
+        "messageType",
+        "sharedPostId",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "CallSession": {
+      "title": "CallSession",
+      "description": "Real-time voice (phone) and video call session with terminal state locking.",
+      "type": "object",
+      "properties": {
+        "callerId": {
+          "type": "string",
+          "description": "UID of the caller."
+        },
+        "callerName": {
+          "type": "string",
+          "description": "Display name of the caller."
+        },
+        "receiverId": {
+          "type": "string",
+          "description": "UID of the callee."
+        },
+        "receiverName": {
+          "type": "string",
+          "description": "Display name of the callee."
+        },
+        "participantIds": {
+          "type": "array",
+          "description": "Bounded array (1..2) of call participant UIDs."
+        },
+        "callType": {
+          "type": "string",
+          "enum": ["audio", "video"],
+          "description": "Voice phone call or video call."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["ringing", "connected", "ended", "declined"],
+          "description": "Lifecycle state; locked once ended or declined."
+        },
+        "durationSec": {
+          "type": "integer",
+          "description": "Call duration in seconds."
+        },
+        "isMuted": {
+          "type": "boolean",
+          "description": "Caller mute state."
+        },
+        "isCameraEnabled": {
+          "type": "boolean",
+          "description": "Video camera state."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp written via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "callerId",
+        "callerName",
+        "receiverId",
+        "receiverName",
+        "participantIds",
+        "callType",
+        "status",
+        "durationSec",
+        "isMuted",
+        "isCameraEnabled",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserAccount" },
+      "description": "Strictly private user account PII and settings isolated to owner."
+    },
+    "/profiles/{userId}": {
+      "schema": { "$ref": "#/entities/CreatorProfile" },
+      "description": "Public discoverable creator profiles and Real Score leaderboard entries."
+    },
+    "/stories/{storyId}": {
+      "schema": { "$ref": "#/entities/StoryItem" },
+      "description": "Status stories displayed in the Home Feed story ring bar."
+    },
+    "/posts/{postId}": {
+      "schema": { "$ref": "#/entities/MediaPost" },
+      "description": "Uploaded photos, short vertical Reels, and long-form Watch videos."
+    },
+    "/posts/{postId}/comments/{commentId}": {
+      "schema": { "$ref": "#/entities/PostComment" },
+      "description": "Comments attached to a specific post, Reel, or Watch video."
+    },
+    "/chats/{chatId}": {
+      "schema": { "$ref": "#/entities/ChatThread" },
+      "description": "Private messaging threads restricted to participantIds."
+    },
+    "/chats/{chatId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "Messages inside a private chat thread."
+    },
+    "/calls/{callId}": {
+      "schema": { "$ref": "#/entities/CallSession" },
+      "description": "Voice and video call signaling and call history logs."
+    }
+  }
+}
